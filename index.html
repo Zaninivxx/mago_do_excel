@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mago do Excel — Do primeiro clique ao domínio completo</title>
+  <meta name="description" content="Aprenda Excel do básico ao avançado com os cursos Aprendiz do Excel e Mago do Excel Pro." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    :root{
+      --white:#ffffff;
+      --light:#f6faf7;
+      --light-green:#ecfdf3;
+      --dark:#101827;
+      --text:#172033;
+      --muted:#64748b;
+      --primary:#16a34a;
+      --primary-dark:#14532d;
+      --secondary:#22c55e;
+      --gold:#b98a3b;
+      --border:rgba(20,83,45,.12);
+      --shadow:0 24px 70px rgba(16,24,39,.12);
+      --radius:24px;
+      --display:'Bebas Neue', sans-serif;
+      --body:'DM Sans', sans-serif;
+      --mono:'JetBrains Mono', monospace;
+    }
+
+    body{
+      font-family:var(--body);
+      color:var(--text);
+      background:var(--white);
+      font-size:18px;
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    img{ display:block; max-width:100%; }
+
+    .container{ width:min(1180px, calc(100% - 44px)); margin-inline:auto; }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:7px 13px;
+      border-radius:999px;
+      background:var(--light-green);
+      color:var(--primary-dark);
+      border:1px solid rgba(22,163,74,.18);
+      font-family:var(--mono);
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      min-height:54px;
+      padding:14px 26px;
+      border-radius:999px;
+      font-weight:800;
+      font-size:15px;
+      border:1px solid transparent;
+      cursor:pointer;
+      transition:.22s ease;
+      white-space:nowrap;
+    }
+
+    .btn:hover{ transform:translateY(-3px); }
+    .btn-primary{
+      color:white;
+      background:linear-gradient(135deg, var(--primary-dark), var(--primary), var(--secondary));
+      box-shadow:0 16px 36px rgba(22,163,74,.28);
+    }
+    .btn-primary:hover{ box-shadow:0 22px 48px rgba(22,163,74,.34); }
+    .btn-ghost{
+      color:var(--primary-dark);
+      background:rgba(255,255,255,.86);
+      border-color:rgba(20,83,45,.16);
+    }
+    .btn-outline{
+      color:var(--primary-dark);
+      background:white;
+      border-color:rgba(20,83,45,.18);
+    }
+    .btn-full{ width:100%; }
+
+    /* NAV */
+    .navbar{
+      position:sticky;
+      top:0;
+      z-index:100;
+      background:rgba(255,255,255,.88);
+      backdrop-filter:blur(18px);
+      border-bottom:1px solid var(--border);
+    }
+    .nav-inner{
+      height:78px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:13px;
+      font-weight:900;
+      letter-spacing:.01em;
+    }
+    .brand img{
+      width:54px;
+      height:54px;
+      object-fit:cover;
+      border-radius:15px;
+      border:1px solid rgba(20,83,45,.14);
+      background:white;
+    }
+    .brand span{
+      font-family:var(--display);
+      font-size:32px;
+      line-height:1;
+      color:var(--primary-dark);
+    }
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:28px;
+      font-size:14px;
+      font-weight:700;
+      color:var(--muted);
+    }
+    .nav-links a:hover{ color:var(--primary); }
+    .nav-cta .btn{ min-height:42px; padding:10px 20px; font-size:14px; }
+
+    /* HERO */
+    .hero{
+      position:relative;
+      padding:94px 0 72px;
+      background:
+        radial-gradient(circle at 80% 18%, rgba(34,197,94,.18), transparent 28%),
+        radial-gradient(circle at 14% 76%, rgba(185,138,59,.12), transparent 25%),
+        linear-gradient(180deg, #ffffff 0%, #f7fbf8 100%);
+      overflow:hidden;
+    }
+    .hero::before{
+      content:'';
+      position:absolute;
+      inset:0;
+      background-image:
+        linear-gradient(rgba(20,83,45,.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(20,83,45,.045) 1px, transparent 1px);
+      background-size:62px 62px;
+      mask-image:linear-gradient(to bottom, black, transparent 78%);
+      pointer-events:none;
+    }
+    .hero-grid{
+      position:relative;
+      z-index:1;
+      display:grid;
+      grid-template-columns:1.02fr .98fr;
+      align-items:center;
+      gap:58px;
+    }
+    .hero h1{
+      margin:18px 0 22px;
+      font-family:var(--display);
+      font-size:clamp(62px, 8vw, 112px);
+      line-height:.92;
+      letter-spacing:.01em;
+      color:var(--dark);
+    }
+    .hero h1 strong{
+      display:block;
+      color:transparent;
+      background:linear-gradient(90deg, var(--primary-dark), var(--primary), var(--gold));
+      -webkit-background-clip:text;
+      background-clip:text;
+    }
+    .hero-p{
+      max-width:620px;
+      color:var(--muted);
+      font-size:20px;
+      line-height:1.75;
+    }
+    .hero-actions{
+      margin-top:34px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+    }
+    .hero-stats{
+      margin-top:36px;
+      display:grid;
+      grid-template-columns:repeat(3, minmax(0,1fr));
+      gap:12px;
+      max-width:620px;
+    }
+    .stat{
+      background:white;
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:18px;
+      box-shadow:0 14px 34px rgba(16,24,39,.06);
+    }
+    .stat strong{
+      display:block;
+      font-family:var(--display);
+      font-size:36px;
+      line-height:1;
+      color:var(--primary);
+    }
+    .stat span{
+      display:block;
+      margin-top:5px;
+      color:var(--muted);
+      font-size:13px;
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:.06em;
+    }
+    .hero-visual{
+      position:relative;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+      align-items:end;
+    }
+    .visual-card{
+      position:relative;
+      background:white;
+      border:1px solid var(--border);
+      border-radius:30px;
+      padding:14px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      transform:rotate(-2deg);
+      animation:float 6s ease-in-out infinite;
+    }
+    .visual-card:nth-child(2){
+      transform:rotate(2deg) translateY(34px);
+      animation-delay:.8s;
+    }
+    .visual-card img{
+      width:100%;
+      height:430px;
+      object-fit:cover;
+      object-position:center top;
+      border-radius:22px;
+      background:#f1f5f9;
+    }
+    .visual-tag{
+      position:absolute;
+      left:26px;
+      bottom:26px;
+      padding:9px 13px;
+      border-radius:999px;
+      background:rgba(255,255,255,.92);
+      border:1px solid rgba(20,83,45,.12);
+      font-weight:900;
+      color:var(--primary-dark);
+      box-shadow:0 12px 30px rgba(16,24,39,.12);
+      font-size:14px;
+    }
+    @keyframes float{
+      0%,100%{ translate:0 0; }
+      50%{ translate:0 -12px; }
+    }
+
+    /* SECTIONS */
+    .section{ padding:92px 0; position:relative; }
+    .section.alt{ background:var(--light); }
+    .section-head{
+      max-width:760px;
+      margin:0 auto 48px;
+      text-align:center;
+    }
+    .section-head h2{
+      margin:16px 0 14px;
+      font-family:var(--display);
+      font-size:clamp(48px, 5.6vw, 78px);
+      line-height:.94;
+      color:var(--dark);
+    }
+    .section-head p{ color:var(--muted); font-size:18px; }
+
+    /* COURSES */
+    .courses-grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:26px;
+      align-items:stretch;
+    }
+    .course-card{
+      background:white;
+      border:1px solid var(--border);
+      border-radius:32px;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      display:grid;
+      grid-template-columns:.95fr 1.05fr;
+      min-height:560px;
+    }
+    .course-image{
+      position:relative;
+      background:linear-gradient(180deg, #f9fafb, #eefbf2);
+      overflow:hidden;
+    }
+    .course-image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center top;
+      transition:transform .5s ease;
+    }
+    .course-card:hover .course-image img{ transform:scale(1.04); }
+    .course-level{
+      position:absolute;
+      top:18px;
+      left:18px;
+      background:rgba(255,255,255,.92);
+      border:1px solid rgba(20,83,45,.14);
+      color:var(--primary-dark);
+      border-radius:999px;
+      padding:8px 12px;
+      font-family:var(--mono);
+      font-size:11px;
+      font-weight:800;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+    }
+    .course-content{
+      padding:34px;
+      display:flex;
+      flex-direction:column;
+    }
+    .course-content h3{
+      font-family:var(--display);
+      color:var(--dark);
+      font-size:50px;
+      line-height:.95;
+      margin-bottom:12px;
+    }
+    .course-desc{
+      color:var(--muted);
+      font-size:16px;
+      margin-bottom:20px;
+    }
+    .course-list{
+      list-style:none;
+      display:grid;
+      gap:10px;
+      margin:4px 0 24px;
+    }
+    .course-list li{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      font-size:15px;
+      color:#334155;
+    }
+    .course-list li::before{
+      content:'✓';
+      width:22px;
+      height:22px;
+      flex:0 0 22px;
+      display:grid;
+      place-items:center;
+      border-radius:50%;
+      color:white;
+      background:var(--primary);
+      font-size:13px;
+      font-weight:900;
+      margin-top:1px;
+    }
+    .price-row{
+      margin-top:auto;
+      padding-top:18px;
+      border-top:1px solid var(--border);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+    }
+    .price small{
+      display:block;
+      color:var(--muted);
+      font-size:12px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.07em;
+    }
+    .price strong{
+      font-family:var(--display);
+      font-size:42px;
+      color:var(--primary-dark);
+      line-height:1;
+    }
+
+    /* BENEFITS */
+    .benefits-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+    .benefit{
+      background:white;
+      border:1px solid var(--border);
+      border-radius:24px;
+      padding:30px;
+      box-shadow:0 18px 44px rgba(16,24,39,.07);
+    }
+    .benefit-icon{
+      width:54px;
+      height:54px;
+      display:grid;
+      place-items:center;
+      border-radius:16px;
+      background:var(--light-green);
+      color:var(--primary-dark);
+      font-size:26px;
+      margin-bottom:18px;
+    }
+    .benefit h3{ color:var(--dark); font-size:20px; margin-bottom:8px; }
+    .benefit p{ color:var(--muted); font-size:15px; }
+
+    /* COMPARE */
+    .compare-wrap{
+      background:white;
+      border:1px solid var(--border);
+      border-radius:30px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    table{ width:100%; border-collapse:collapse; }
+    th, td{
+      padding:18px 22px;
+      text-align:center;
+      border-bottom:1px solid var(--border);
+      font-size:15px;
+    }
+    th:first-child, td:first-child{ text-align:left; font-weight:800; color:var(--dark); }
+    th{
+      background:var(--light-green);
+      color:var(--primary-dark);
+      font-size:14px;
+      text-transform:uppercase;
+      letter-spacing:.06em;
+    }
+    tr:last-child td{ border-bottom:none; }
+    .yes{ color:var(--primary); font-weight:900; }
+    .no{ color:#94a3b8; font-weight:900; }
+
+    /* CTA */
+    .cta-box{
+      display:grid;
+      grid-template-columns:1fr 360px;
+      gap:40px;
+      align-items:center;
+      background:linear-gradient(135deg, var(--primary-dark), #166534, var(--primary));
+      color:white;
+      border-radius:34px;
+      padding:54px;
+      box-shadow:0 26px 80px rgba(20,83,45,.28);
+      overflow:hidden;
+      position:relative;
+    }
+    .cta-box::after{
+      content:'';
+      position:absolute;
+      right:-110px;
+      top:-110px;
+      width:330px;
+      height:330px;
+      border-radius:50%;
+      background:rgba(255,255,255,.12);
+    }
+    .cta-box h2{
+      font-family:var(--display);
+      font-size:clamp(46px, 5vw, 74px);
+      line-height:.95;
+      margin-bottom:14px;
+    }
+    .cta-box p{ color:rgba(255,255,255,.78); max-width:680px; }
+    .lead-form{
+      position:relative;
+      z-index:1;
+      background:white;
+      border-radius:26px;
+      padding:26px;
+      box-shadow:0 20px 60px rgba(0,0,0,.18);
+    }
+    .lead-form h3{ color:var(--dark); margin-bottom:6px; font-size:20px; }
+    .lead-form p{ color:var(--muted); font-size:14px; margin-bottom:16px; }
+    .field{ margin-bottom:12px; }
+    .field input, .field select{
+      width:100%;
+      min-height:48px;
+      border-radius:14px;
+      border:1px solid rgba(20,83,45,.16);
+      background:#f8fafc;
+      padding:12px 14px;
+      outline:none;
+      font:inherit;
+      font-size:14px;
+      color:var(--dark);
+      transition:.2s ease;
+    }
+    .field input:focus, .field select:focus{
+      border-color:var(--primary);
+      box-shadow:0 0 0 4px rgba(34,197,94,.12);
+      background:white;
+    }
+    .form-note{ margin-top:10px; color:var(--muted) !important; font-size:12px !important; text-align:center; }
+
+    /* FAQ */
+    .faq-inner{ max-width:820px; margin-inline:auto; }
+    .faq-item{
+      background:white;
+      border:1px solid var(--border);
+      border-radius:20px;
+      margin-bottom:12px;
+      overflow:hidden;
+    }
+    .faq-q{
+      width:100%;
+      border:none;
+      background:white;
+      color:var(--dark);
+      padding:22px 24px;
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      align-items:center;
+      text-align:left;
+      cursor:pointer;
+      font:inherit;
+      font-weight:900;
+      font-size:17px;
+    }
+    .faq-icon{ color:var(--primary); font-size:24px; line-height:1; transition:.25s ease; }
+    .faq-a{
+      max-height:0;
+      overflow:hidden;
+      transition:max-height .32s ease, padding .32s ease;
+      color:var(--muted);
+      padding:0 24px;
+      font-size:15px;
+    }
+    .faq-item.open .faq-a{ max-height:160px; padding:0 24px 22px; }
+    .faq-item.open .faq-icon{ transform:rotate(45deg); }
+
+    /* FOOTER */
+    .footer{
+      background:var(--dark);
+      color:white;
+      padding:42px 0;
+    }
+    .footer-inner{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:18px;
+    }
+    .footer-brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+    .footer-brand img{
+      width:48px;
+      height:48px;
+      object-fit:cover;
+      border-radius:14px;
+    }
+    .footer-brand strong{
+      font-family:var(--display);
+      font-size:28px;
+      color:white;
+    }
+    .footer-note{ color:rgba(255,255,255,.62); font-size:14px; }
+
+    .reveal{
+      opacity:0;
+      transform:translateY(34px);
+      transition:opacity .62s ease, transform .62s ease;
+    }
+    .reveal.visible{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    @media (max-width:1100px){
+      .course-card{ grid-template-columns:1fr; }
+      .course-image{ height:420px; }
+    }
+    @media (max-width:960px){
+      .nav-links{ display:none; }
+      .hero-grid{ grid-template-columns:1fr; }
+      .hero-visual{ max-width:660px; margin-inline:auto; }
+      .benefits-grid, .courses-grid{ grid-template-columns:1fr; }
+      .cta-box{ grid-template-columns:1fr; padding:38px 24px; }
+    }
+    @media (max-width:700px){
+      body{ font-size:16px; }
+      .container{ width:min(100% - 28px, 1180px); }
+      .nav-inner{ height:70px; }
+      .brand img{ width:46px; height:46px; }
+      .brand span{ font-size:26px; }
+      .nav-cta{ display:none; }
+      .hero{ padding:68px 0 56px; }
+      .hero-actions{ flex-direction:column; }
+      .hero-stats{ grid-template-columns:1fr; }
+      .hero-visual{ grid-template-columns:1fr; }
+      .visual-card, .visual-card:nth-child(2){ transform:none; }
+      .visual-card:nth-child(2){ translate:0 0; }
+      .visual-card img{ height:390px; }
+      .section{ padding:70px 0; }
+      .course-content{ padding:26px; }
+      .course-content h3{ font-size:42px; }
+      .price-row{ flex-direction:column; align-items:stretch; }
+      th,td{ padding:14px 12px; font-size:13px; }
+      .compare-wrap{ overflow-x:auto; }
+      table{ min-width:640px; }
+      .footer-inner{ align-items:flex-start; flex-direction:column; }
+    }
+</style>
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a class="brand" href="#inicio" aria-label="Mago do Excel">
+        <img src="mago_logo.jpg" alt="Logo Mago do Excel">
+        <span>Mago do Excel</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Menu principal">
+        <a href="#inicio">Início</a>
+        <a href="#cursos">Cursos</a>
+        <a href="#beneficios">Benefícios</a>
+        <a href="#comparativo">Comparativo</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <div class="nav-cta">
+        <a class="btn btn-primary" href="#inscricao">Quero começar</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow reveal">🧙‍♂️ Do básico ao avançado</span>
+          <h1 class="reveal">Aprenda Excel <strong>do jeito certo.</strong></h1>
+          <p class="hero-p reveal">
+            Da primeira fórmula aos dashboards profissionais. Entre na jornada do
+            <strong>Aprendiz do Excel</strong> e evolua até o nível <strong>Mago do Excel Pro</strong>, com aulas práticas e foco no mercado de trabalho.
+          </p>
+          <div class="hero-actions reveal">
+            <a class="btn btn-primary" href="#cursos">Conhecer os cursos →</a>
+            <a class="btn btn-ghost" href="#comparativo">Ver comparação</a>
+          </div>
+          <div class="hero-stats reveal">
+            <div class="stat"><strong>2</strong><span>níveis de curso</span></div>
+            <div class="stat"><strong>100%</strong><span>online e prático</span></div>
+            <div class="stat"><strong>Cert.</strong><span>incluso</span></div>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal" aria-label="Cursos Mago do Excel">
+          <div class="visual-card">
+            <img src="aprendiz_excel.jpg" alt="Imagem do curso Aprendiz do Excel">
+            <div class="visual-tag">📗 Aprendiz do Excel</div>
+          </div>
+          <div class="visual-card">
+            <img src="mago_excel.jpg" alt="Imagem do curso Mago do Excel Pro">
+            <div class="visual-tag">🪄 Mago do Excel Pro</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="cursos">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Escolha sua jornada</span>
+          <h2>Do aprendiz ao mago.</h2>
+          <p>Você pode começar do zero ou ir direto para técnicas mais profissionais, dependendo do seu nível atual.</p>
+        </div>
+
+        <div class="courses-grid">
+          <article class="course-card reveal">
+            <div class="course-image">
+              <span class="course-level">Nível básico</span>
+              <img src="aprendiz_curso.jpg" alt="Curso Aprendiz do Excel">
+            </div>
+            <div class="course-content">
+              <h3>Aprendiz do Excel</h3>
+              <p class="course-desc">Ideal para quem está começando e quer ganhar confiança para usar planilhas no estudo, trabalho e processos do dia a dia.</p>
+              <ul class="course-list">
+                <li>Interface do Excel e organização de planilhas</li>
+                <li>Fórmulas básicas e essenciais</li>
+                <li>Formatação profissional</li>
+                <li>Tabelas, filtros e gráficos simples</li>
+                <li>Exercícios práticos para fixação</li>
+                <li>Certificado de conclusão</li>
+              </ul>
+              <div class="price-row">
+                <div class="price">
+                  <small>Curso inicial</small>
+                  <strong>R$ 97</strong>
+                </div>
+                <a class="btn btn-primary" href="#inscricao" data-curso="Aprendiz do Excel">Quero ser Aprendiz</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="course-card reveal">
+            <div class="course-image">
+              <span class="course-level">Nível avançado</span>
+              <img src="mago_curso.jpg" alt="Curso Mago do Excel Pro">
+            </div>
+            <div class="course-content">
+              <h3>Mago do Excel Pro</h3>
+              <p class="course-desc">Para quem já conhece o básico e deseja dominar recursos que realmente fazem diferença no ambiente profissional.</p>
+              <ul class="course-list">
+                <li>PROCX, SOMASES, CONT.SES e fórmulas avançadas</li>
+                <li>Tabelas dinâmicas e análise de dados</li>
+                <li>Dashboards executivos e visuais profissionais</li>
+                <li>Power Query para limpeza e consolidação</li>
+                <li>Automação de rotinas e projetos corporativos</li>
+                <li>Certificado de conclusão</li>
+              </ul>
+              <div class="price-row">
+                <div class="price">
+                  <small>Curso avançado</small>
+                  <strong>R$ 197</strong>
+                </div>
+                <a class="btn btn-primary" href="#inscricao" data-curso="Mago do Excel Pro">Quero virar Mago</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="beneficios">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Por que aprender aqui?</span>
+          <h2>Excel direto para o mundo real.</h2>
+          <p>Conteúdo prático, visual e pensado para quem quer aplicar Excel em rotina profissional.</p>
+        </div>
+
+        <div class="benefits-grid">
+          <article class="benefit reveal">
+            <div class="benefit-icon">📊</div>
+            <h3>Projetos práticos</h3>
+            <p>Aprenda criando planilhas, relatórios e dashboards que simulam demandas reais de empresas.</p>
+          </article>
+          <article class="benefit reveal">
+            <div class="benefit-icon">⚡</div>
+            <h3>Mais produtividade</h3>
+            <p>Saia do trabalho manual e aprenda formas mais rápidas de analisar e organizar informações.</p>
+          </article>
+          <article class="benefit reveal">
+            <div class="benefit-icon">🏆</div>
+            <h3>Certificado</h3>
+            <p>Finalize o treinamento com certificado para fortalecer currículo, LinkedIn e entrevistas.</p>
+          </article>
+          <article class="benefit reveal">
+            <div class="benefit-icon">🧠</div>
+            <h3>Didática simples</h3>
+            <p>Explicações passo a passo para evoluir com segurança, sem pular fundamentos importantes.</p>
+          </article>
+          <article class="benefit reveal">
+            <div class="benefit-icon">💼</div>
+            <h3>Foco profissional</h3>
+            <p>Aprenda recursos utilizados em áreas como financeiro, administrativo, vendas e operações.</p>
+          </article>
+          <article class="benefit reveal">
+            <div class="benefit-icon">🪄</div>
+            <h3>Jornada evolutiva</h3>
+            <p>Comece como Aprendiz e avance até o nível Mago, dominando ferramentas mais poderosas.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="comparativo">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Comparativo</span>
+          <h2>Qual curso escolher?</h2>
+          <p>Veja rapidamente qual treinamento combina melhor com seu momento atual.</p>
+        </div>
+
+        <div class="compare-wrap reveal">
+          <table>
+            <thead>
+              <tr>
+                <th>Recursos</th>
+                <th>Aprendiz do Excel</th>
+                <th>Mago do Excel Pro</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Excel do zero</td><td class="yes">Sim</td><td class="yes">Sim</td></tr>
+              <tr><td>Fórmulas básicas</td><td class="yes">Sim</td><td class="yes">Sim</td></tr>
+              <tr><td>Gráficos e formatação</td><td class="yes">Sim</td><td class="yes">Sim</td></tr>
+              <tr><td>Tabelas dinâmicas</td><td class="no">Não</td><td class="yes">Sim</td></tr>
+              <tr><td>Dashboards profissionais</td><td class="no">Não</td><td class="yes">Sim</td></tr>
+              <tr><td>Power Query</td><td class="no">Não</td><td class="yes">Sim</td></tr>
+              <tr><td>Automações e projetos corporativos</td><td class="no">Não</td><td class="yes">Sim</td></tr>
+              <tr><td>Certificado</td><td class="yes">Sim</td><td class="yes">Sim</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="inscricao">
+      <div class="container">
+        <div class="cta-box reveal">
+          <div>
+            <span class="eyebrow" style="background:rgba(255,255,255,.14);color:white;border-color:rgba(255,255,255,.18)">Inscrição</span>
+            <h2>Comece sua evolução no Excel hoje.</h2>
+            <p>Preencha seus dados e escolha o curso que mais combina com você. Depois, você será direcionado para o checkout seguro da Kiwify para finalizar a compra.</p>
+          </div>
+
+          <form class="lead-form" id="leadForm">
+            <h3>Receber informações</h3>
+            <p>Informe seus dados para continuar.</p>
+            <div class="field"><input type="text" id="nome" placeholder="Seu nome" required></div>
+            <div class="field"><input type="email" id="email" placeholder="Seu melhor e-mail" required></div>
+            <div class="field"><input type="tel" id="whats" placeholder="WhatsApp" required></div>
+            <div class="field">
+              <select id="curso" required>
+                <option value="">Escolha o curso</option>
+                <option>Aprendiz do Excel</option>
+                <option>Mago do Excel Pro</option>
+                <option>Quero fazer os dois</option>
+              </select>
+            </div>
+            <button class="btn btn-primary btn-full" type="submit">Ir para pagamento na Kiwify →</button>
+            <p class="form-note">Antes de publicar, troque os links da Kiwify em <strong>js/config.js</strong>.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">FAQ</span>
+          <h2>Dúvidas frequentes</h2>
+        </div>
+
+        <div class="faq-inner">
+          <div class="faq-item open reveal">
+            <button class="faq-q" type="button">Preciso saber Excel para começar?<span class="faq-icon">+</span></button>
+            <div class="faq-a">Não. O Aprendiz do Excel começa do básico e foi pensado para quem ainda está iniciando.</div>
+          </div>
+          <div class="faq-item reveal">
+            <button class="faq-q" type="button">Qual a diferença entre os cursos?<span class="faq-icon">+</span></button>
+            <div class="faq-a">O Aprendiz é o curso de entrada. O Mago do Excel Pro é mais avançado, com dashboards, Power Query, tabelas dinâmicas e automações.</div>
+          </div>
+          <div class="faq-item reveal">
+            <button class="faq-q" type="button">Tem certificado?<span class="faq-icon">+</span></button>
+            <div class="faq-a">Sim. Ambos os treinamentos contam com certificado de conclusão.</div>
+          </div>
+          <div class="faq-item reveal">
+            <button class="faq-q" type="button">As aulas são online?<span class="faq-icon">+</span></button>
+            <div class="faq-a">Sim. A proposta da landing está preparada para venda de cursos online.</div>
+          </div>
+          <div class="faq-item reveal">
+            <button class="faq-q" type="button">Posso fazer os dois cursos?<span class="faq-icon">+</span></button>
+            <div class="faq-a">Sim. Essa é a melhor jornada: começar como Aprendiz e depois evoluir para Mago do Excel Pro.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img src="mago_logo.jpg" alt="Logo Mago do Excel">
+        <strong>Mago do Excel</strong>
+      </div>
+      <p class="footer-note">© 2026 — Mago do Excel. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+// CONFIGURAÇÕES DO SITE
+// 1) Cadastre seus produtos na Kiwify
+// 2) Copie o link de checkout de cada produto
+// 3) Cole nos campos abaixo
+
+window.MAGO_CONFIG = {
+  // Backend local/produção para salvar leads antes de ir para a Kiwify
+  API_URL: 'http://localhost:3000/api/leads',
+
+  // Links da Kiwify - troque pelos seus links reais
+  KIWIFY_LINKS: {
+    'Aprendiz do Excel': 'COLE_AQUI_O_LINK_DA_KIWIFY_APRENDIZ',
+    'Mago do Excel Pro': 'COLE_AQUI_O_LINK_DA_KIWIFY_MAGO_PRO',
+    'Quero fazer os dois': 'COLE_AQUI_O_LINK_DA_KIWIFY_COMBO'
+  },
+
+  // WhatsApp opcional para contato
+  WHATSAPP: '5511999999999'
+};
+
+</script>
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+document.querySelectorAll('.faq-item').forEach((item) => {
+  const btn = item.querySelector('.faq-q');
+  btn.addEventListener('click', () => item.classList.toggle('open'));
+});
+
+// Quando clicar em um botão de curso, já seleciona o curso no formulário.
+document.querySelectorAll('[data-curso]').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const curso = btn.getAttribute('data-curso');
+    const select = document.getElementById('curso');
+    if (select) select.value = curso;
+  });
+});
+
+const config = window.MAGO_CONFIG || {};
+
+function montarMensagemWhatsApp({ nome, email, whats, curso }) {
+  return `Olá! Tenho interesse no curso ${curso}.%0A%0ANome: ${encodeURIComponent(nome)}%0AE-mail: ${encodeURIComponent(email)}%0AWhatsApp: ${encodeURIComponent(whats)}`;
+}
+
+async function salvarLead(payload) {
+  if (!config.API_URL) return;
+
+  try {
+    await fetch(config.API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+  } catch (error) {
+    console.warn('Não foi possível salvar o lead no backend. O checkout continuará normalmente.', error);
+  }
+}
+
+const leadForm = document.getElementById('leadForm');
+
+if (leadForm) {
+  leadForm.addEventListener('submit', async function(e){
+    e.preventDefault();
+
+    const nome = document.getElementById('nome').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const whats = document.getElementById('whats').value.trim();
+    const curso = document.getElementById('curso').value;
+
+    const payload = {
+      nome,
+      email,
+      whatsapp: whats,
+      curso,
+      origem: 'landing-page-mago-do-excel',
+      criadoEm: new Date().toISOString()
+    };
+
+    await salvarLead(payload);
+
+    const linkKiwify = config.KIWIFY_LINKS?.[curso];
+
+    if (linkKiwify && !linkKiwify.includes('COLE_AQUI')) {
+      window.location.href = linkKiwify;
+      return;
+    }
+
+    // Plano B: se você ainda não colocou o link da Kiwify, abre o WhatsApp.
+    const numeroWhatsApp = config.WHATSAPP || '5511999999999';
+    const mensagem = montarMensagemWhatsApp({ nome, email, whats, curso });
+    window.open(`https://wa.me/${numeroWhatsApp}?text=${mensagem}`, '_blank');
+  });
+}
+
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('.navbar');
+  nav.style.boxShadow = window.scrollY > 18 ? '0 8px 30px rgba(16,24,39,.08)' : 'none';
+});
+
+</script>
+</body>
+</html>
