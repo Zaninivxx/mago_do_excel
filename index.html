@@ -875,23 +875,29 @@
         <div class="faq-inner">
           <div class="faq-item open reveal">
             <button class="faq-q" type="button">Preciso saber Excel para começar?<span class="faq-icon">+</span></button>
-            <div class="faq-a">Não. O Aprendiz do Excel começa do básico e foi pensado para quem ainda está iniciando.</div>
+            <div class="faq-a">Não. Tanto o curso Aprendiz quanto o Mago foram desenvolvidos para atender alunos que estão começando do zero. Ambos incluem um módulo de Excel Básico, onde você aprenderá os principais conceitos da ferramenta antes de avançar para conteúdos mais complexos.</div>
           </div>
           <div class="faq-item reveal">
             <button class="faq-q" type="button">Qual a diferença entre os cursos?<span class="faq-icon">+</span></button>
-            <div class="faq-a">O Aprendiz é o curso de entrada. O Mago do Excel Pro é mais avançado, com dashboards, Power Query, tabelas dinâmicas e automações.</div>
+            <div class="faq-a">O Curso Aprendiz foi criado para quem deseja sair do zero e dominar os fundamentos do Excel de forma rápida e prática.
+Já o Mago do Excel Pro é uma formação completa que leva você do básico ao avançado, ensinando as ferramentas, fórmulas e técnicas mais valorizadas pelas empresas. Ao final da jornada, você estará preparado para utilizar o Excel com confiança e se destacar no mercado de trabalho.</div>
           </div>
           <div class="faq-item reveal">
             <button class="faq-q" type="button">Tem certificado?<span class="faq-icon">+</span></button>
             <div class="faq-a">Sim. Ambos os treinamentos contam com certificado de conclusão.</div>
           </div>
           <div class="faq-item reveal">
-            <button class="faq-q" type="button">As aulas são online?<span class="faq-icon">+</span></button>
-            <div class="faq-a">Sim. A proposta da landing está preparada para venda de cursos online.</div>
+            <button class="faq-q" type="button"> posso assistir pelo celular ?<span class="faq-icon">+</span></button>
+            <div class="faq-a">Sim. As aulas podem ser acessadas pelo celular, tablet ou computador.</div>
           </div>
           <div class="faq-item reveal">
             <button class="faq-q" type="button">Posso fazer os dois cursos?<span class="faq-icon">+</span></button>
-            <div class="faq-a">Sim. Essa é a melhor jornada: começar como Aprendiz e depois evoluir para Mago do Excel Pro.</div>
+            <div class="faq-a">Sim, mas não é necessário. Se o seu objetivo é aprender Excel do zero ao avançado, o Mago do Excel Pro já é a melhor escolha, pois ele inclui todo o conteúdo do Curso Aprendiz e ainda adiciona os módulos intermediário e avançado.
+O Curso Aprendiz é indicado para quem deseja começar pelos fundamentos com um investimento mais acessível, enquanto o Mago do Excel Pro oferece uma formação completa para quem busca se destacar no mercado de trabalho.</div>
+          </div>
+          <div class="faq-item reveal">
+            <button class="faq-q" type="button">Terei suporte ?<span class="faq-icon">+</span></button>
+            <div class="faq-a">Sim. Caso tenha dúvidas durante seus estudos, você poderá contar com suporte através da plataforma do curso e também pelas redes sociais do @Mago_do_Excel.</div>
           </div>
         </div>
       </div>
@@ -916,7 +922,7 @@
 
 window.MAGO_CONFIG = {
   // Backend local/produção para salvar leads antes de ir para a Kiwify
-  API_URL: 'http://localhost:3000/api/leads',
+  API_URL: '',
 
   // Links da Kiwify - troque pelos seus links reais
   KIWIFY_LINKS: {
@@ -926,7 +932,7 @@ window.MAGO_CONFIG = {
   },
 
   // WhatsApp opcional para contato
-  WHATSAPP: '4002-8922'
+  WHATSAPP: '5511986124679'
 };
 
 </script>
@@ -1003,7 +1009,7 @@ if (leadForm) {
     }
 
     // Plano B: se você ainda não colocou o link da Kiwify, abre o WhatsApp.
-    const numeroWhatsApp = config.WHATSAPP || '5511999999999';
+    const numeroWhatsApp = config.WHATSAPP || '5511986124679';
     const mensagem = montarMensagemWhatsApp({ nome, email, whats, curso });
     window.open(`https://wa.me/${numeroWhatsApp}?text=${mensagem}`, '_blank');
   });
