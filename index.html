@@ -680,7 +680,7 @@
           <div class="hero-stats reveal">
             <div class="stat"><strong>2</strong><span>níveis de curso</span></div>
             <div class="stat"><strong>100%</strong><span>online e prático</span></div>
-            <div class="stat"><strong>Certificado.</strong><span>incluso</span></div>
+            <div class="stat"><strong>Certificado</strong><span>incluso</span></div>
           </div>
         </div>
 
@@ -867,7 +867,6 @@
                 <option value="">Escolha o curso</option>
                 <option>Aprendiz do Excel</option>
                 <option>Mago do Excel Pro</option>
-                <option>Quero fazer os dois</option>
               </select>
             </div>
             <button class="btn btn-primary btn-full" type="submit"> Se inscreva →</button>
@@ -940,11 +939,9 @@ window.MAGO_CONFIG = {
   KIWIFY_LINKS: {
     'Aprendiz do Excel': 'https://pay.kiwify.com.br/iF3nACN',
     'Mago do Excel Pro': 'COLE_AQUI_O_LINK_DA_KIWIFY_MAGO_PRO',
-    'Quero fazer os dois': 'COLE_AQUI_O_LINK_DA_KIWIFY_COMBO'
-  },
-
+  
   // WhatsApp opcional para contato
-  WHATSAPP: '5511986124679'
+  WHATSAPP: '11986124679'
 };
 
 </script>
@@ -1007,7 +1004,7 @@ if (leadForm) {
       email,
       whatsapp: whats,
       curso,
-      origem: 'landing-page-mago-do-excel',
+      origem: ' curso de excel',
       criadoEm: new Date().toISOString()
     };
 
@@ -1021,7 +1018,7 @@ if (leadForm) {
     }
 
     // Plano B: se você ainda não colocou o link da Kiwify, abre o WhatsApp.
-    const numeroWhatsApp = config.WHATSAPP || '5511986124679';
+    const numeroWhatsApp = config.WHATSAPP || '11986124679';
     const mensagem = montarMensagemWhatsApp({ nome, email, whats, curso });
     window.open(`https://wa.me/${numeroWhatsApp}?text=${mensagem}`, '_blank');
   });
